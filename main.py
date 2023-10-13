@@ -1,16 +1,62 @@
-# This is a sample Python script.
+# import pprint as PrettyLogger
+# import logging as log
+# import sys
+# import os
+import config
+import configparser
+import testsuites
+from enum import Enum
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+EnvironmentList = Enum('env', ['local', 'test', 'prod'])
+InitBuildSetup = bool
+
+config = configparser.ConfigParser()
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+def tests_init(env):
+    tests_passed = []
+    tests_failed = []
+    exception_thrown = object()
+    if env == 'local':
+        # Built
+        # Rendered
+        # MeaningfulFirstPaint
+        # Performance
+        # if tests_passed:
+        #     PrettyLogger(f'Tests  {tests_passed} PASSED.')
+        #     PrettyLogger(f'Tests  {tests_failed} Failed spectacularly with {exception_thrown}')
+        pass
+
+    if env == 'test':
+        # Run local test suites, handle for server-side Crypts
+        # Ensure services communicate and resolve
+        # Client <-> Server perf
+        # Debug Auth
+
+        # return test_suites(env)
+        pass
+    if env == 'prod':
+        pass
+
+
+def set_environment(Environment):
+    # evaL if we have a real env set, if not just throw an exception instead of guessing
+    if Environment in EnvironmentList:
+        InitBuildSetup = config.Build(Environment.Success)
+        with open('./data/config.ini', 'r') as configfile:
+            if configfile is None or False:
+                raise Exception("Did you build the INI")
+        # log()
+        return;
 
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    print_hi('PyCharm')
+    tests_init()
+    # local, test, prod
+    Environment = 'local'
+    set_environment(Environment)
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+    # Build(ENV)
+    # TestSuites(ENV);
+    pass
